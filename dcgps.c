@@ -1,9 +1,13 @@
 #include <gps.h>
+#include "gpsprint.h"
+#include "gps-utils.h"
+#define TRUE 1
+#define FALSE 0
 
 
 
 
-
+bool reading = TRUE;
 
 int main(void)
 {
@@ -12,10 +16,11 @@ int main(void)
     if (gps_open(server, DEFAULT_GPSD_PORT, &gpsdata) == -1)
     {
         //errors
+        fprintf(stderr, "%s\n", gps_errstr(err));
     }
     gps_stream(&gpsdata, WATCH_ENABLE | WATCH_JSON, NULL);
 
-    for(;;)
+    while(reading)
     {
         if(gps_waiting(&gpsdata, 500))
         {
