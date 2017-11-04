@@ -1,6 +1,6 @@
 #C3980 Assignment 3 Makefile
 
-CC=gcc -Wall
+CC=gcc -Wall -std=c11
 CLIB=-lgps
 
 dcgps: dcgps.o gps-utils.o gpsprint.o
