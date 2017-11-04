@@ -44,21 +44,18 @@ void YourPrintDataFunction(struct gps_data_t* gpsdata)
         {
             if (i < gpsdata->satellites_visible)
             {
-                //print things here
-                //strcat onto buffer
-                //timestamp
                 fprintf(stdout,
-				   " PRN: %3d\n  Elevation: %02d\n   Azimuth: %03d\n   SS: %02d\n     Used: %c\n",
-				   gpsdata->PRN[i],
-				   gpsdata->elevation[i], gpsdata->azimuth[i],
+				   " Time: %f    PRN: %3d\n  Elevation: %02d\n   Azimuth: %03d\n   SS: %02d\n    Longitude: %s %c    Latidtude: %s %c     Used: %c\n",
+				   gpsdata->fix.time,
+                   gpsdata->PRN[i],
+				   gpsdata->elevation[i],
+                   gpsdata->azimuth[i],
 				   (int)gpsdata->ss[i],
-				   usedflags[i] ? 'Y' : 'N');
-                //strcat(databuffer, "Hello World\n");
-                //fprintf(stdout, databuffer);
-                //latitude
-                /*strcat(databuffer, deg_to_str(deg_type
-                    , fabs(gpsdata->fix.latitude))
-                    , (gpsdata->fix.latitude<0) ? "S\n":"N\n");*/
+                     deg_to_str(deg_type, fabs(gpsdata->fix.longitude)),
+                    (gpsdata->fix.longitude < 0) ? 'W' : 'E') ,
+                    deg_to_str(deg_type, fabs(gpsdata->fix.latitude)),
+                    (gpsdata->fix.latitude < 0) ? 'S' : 'N'),
+                    usedflags[i] ? 'Y' : 'N');
             }
         }
     }
