@@ -1,5 +1,4 @@
 #include "dcgps.h"
-<<<<<<< HEAD
 #include "gpsprint.h"
 #include <errno.h>
 
@@ -36,20 +35,11 @@ void readGPS(struct gps_data_t* gpsdata)
         }
     }
 }
-=======
-
-/*
-read loop function here
-*/
->>>>>>> 2e67e37290d3864d31a60e578e72af166343cb14
 
 /*
 error checking function here
 */
-<<<<<<< HEAD
 bool validateData(struct gps_data_t* gpsdata)
 {
     return false;
 }
-=======
->>>>>>> 2e67e37290d3864d31a60e578e72af166343cb14

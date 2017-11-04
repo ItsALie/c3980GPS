@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #include "dcgps.h"
 #include "gpsprint.h"
 #include <string.h>
@@ -10,8 +9,6 @@
 bool usedflags[MAXCHANNELS];
 char databuffer[256];
 
-=======
->>>>>>> 2e67e37290d3864d31a60e578e72af166343cb14
 
 /*
 print function here
@@ -26,7 +23,6 @@ prints:
 */
 void YourPrintDataFunction(struct gps_data_t* gpsdata)
 {
-<<<<<<< HEAD
     for (size_t i = 0; i < MAXCHANNELS; i++)
     {
         //fprintf(stderr, "Inside first for loop\n");
@@ -62,8 +58,4 @@ void YourPrintDataFunction(struct gps_data_t* gpsdata)
             }
         }
     }
-
-=======
->>>>>>> 2e67e37290d3864d31a60e578e72af166343cb14
-
 }
