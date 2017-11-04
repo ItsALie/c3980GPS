@@ -47,9 +47,13 @@ void YourPrintDataFunction(struct gps_data_t* gpsdata)
                 //print things here
                 //strcat onto buffer
                 //timestamp
-                //strcat(databuffer, unix_to_iso8601(
-                //    gpsdata->skyview_time, databuffer, 20));
-                strcat(databuffer, "Hello World\n");
+                strcat(databuffer,
+				   " PRN: %3d\n  Elevation: %02d\n   Azimuth: %03d\n   SS: %02d\n     Used: %c\n",
+				   gpsdata->PRN[i],
+				   gpsdata->elevation[i], gpsdata->azimuth[i],
+				   (int)gpsdata->ss[i],
+				   usedflags[i] ? 'Y' : 'N');
+                //strcat(databuffer, "Hello World\n");
                 fprintf(stdout, databuffer);
                 //latitude
                 /*strcat(databuffer, deg_to_str(deg_type
