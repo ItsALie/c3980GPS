@@ -7,7 +7,7 @@ dcgps: dcgps.o gps-utils.o gpsprint.o
 		$(CC) -o dcgps dcgps.o gps-utils.o gpsprint.o $(CLIB)
 
 clean:
-		rm -f *.0 core.* dcgps
+		rm -f *.o core.* dcgps
 
 dcgps.o:
 		$(CC) -c dcgps.c
