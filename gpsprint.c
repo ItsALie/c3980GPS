@@ -3,7 +3,7 @@
 #include <string.h>
 #define MAXCHANNELS 72
 #define MAX_POSSIBLE_SATS (MAXCHANNELS - 2)
-
+static enum deg_str_type deg_type = deg_dd;
 
 
 bool usedflags[MAXCHANNELS];
