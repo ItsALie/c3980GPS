@@ -3,7 +3,6 @@
 #include <string.h>
 #define MAXCHANNELS 72
 #define MAX_POSSIBLE_SATS (MAXCHANNELS - 2)
-static enum deg_str_type deg_type = deg_dd;
 
 
 bool usedflags[MAXCHANNELS];
@@ -45,7 +44,7 @@ void YourPrintDataFunction(struct gps_data_t* gpsdata)
             if (i < gpsdata->satellites_visible)
             {
                 fprintf(stdout,
-				   " Time: %f    PRN: %3d\n  Elevation: %02d\n   Azimuth: %03d\n   SS: %02d\n    Longitude: %d %c    Latidtude: %d %c     Used: %c\n",
+				   " Time: %f    PRN: %3d\n  Elevation: %02d\n   Azimuth: %03d\n   SS: %02d\n    Longitude: %f %c    Latidtude: %f %c     Used: %c\n",
 				   gpsdata->fix.time,
                    gpsdata->PRN[i],
 				   gpsdata->elevation[i],
