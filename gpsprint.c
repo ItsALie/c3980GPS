@@ -29,8 +29,8 @@ void YourPrintDataFunction(struct gps_data_t* gpsdata)
         usedflags[i] = false;
         for(size_t j = 0; j < gpsdata->satellites_used; j++)
         {
-            fprintf(stderr, "Inside the inside loop\n");
-            if (gpsdata->skyview[j].used == gpsdata->skyview[i].PRN)
+            //fprintf(stderr, "Inside the inside loop\n");
+            if (gpsdata->used[j] == gpsdata->PRN[i])
             {
                 usedflags[i] = true;
             }
@@ -47,14 +47,14 @@ void YourPrintDataFunction(struct gps_data_t* gpsdata)
                 //print things here
                 //strcat onto buffer
                 //timestamp
-                strcat(databuffer,
+                fprintf(stdout,
 				   " PRN: %3d\n  Elevation: %02d\n   Azimuth: %03d\n   SS: %02d\n     Used: %c\n",
 				   gpsdata->PRN[i],
 				   gpsdata->elevation[i], gpsdata->azimuth[i],
 				   (int)gpsdata->ss[i],
 				   usedflags[i] ? 'Y' : 'N');
                 //strcat(databuffer, "Hello World\n");
-                fprintf(stdout, databuffer);
+                //fprintf(stdout, databuffer);
                 //latitude
                 /*strcat(databuffer, deg_to_str(deg_type
                     , fabs(gpsdata->fix.latitude))
