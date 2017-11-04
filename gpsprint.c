@@ -52,9 +52,9 @@ void YourPrintDataFunction(struct gps_data_t* gpsdata)
                    gpsdata->azimuth[i],
 				   (int)gpsdata->ss[i],
                      deg_to_str(deg_type, fabs(gpsdata->fix.longitude)),
-                    (gpsdata->fix.longitude < 0) ? 'W' : 'E') ,
+                    (gpsdata->fix.longitude < 0) ? 'W' : 'E' ,
                     deg_to_str(deg_type, fabs(gpsdata->fix.latitude)),
-                    (gpsdata->fix.latitude < 0) ? 'S' : 'N'),
+                    (gpsdata->fix.latitude < 0) ? 'S' : 'N',
                     usedflags[i] ? 'Y' : 'N');
             }
         }
