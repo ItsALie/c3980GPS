@@ -55,7 +55,6 @@ void YourPrintDataFunction(struct gps_data_t* gpsdata)
                 fprintf(stdout,
 				   "SatNo: %n\n PRN: %3d\n Elevation: %02d\n Azimuth: %03d\n SS: %02ddB\n    Used: %c\n",
                    i,
-				   timebuffer,
                    gpsdata->PRN[i],
 				   gpsdata->elevation[i],
                    gpsdata->azimuth[i],
