@@ -42,9 +42,7 @@ void YourPrintDataFunction(struct gps_data_t* gpsdata)
         (void)unix_to_iso8601(gpsdata->fix.time, timebuffer, sizeof(timebuffer));
 
         fprintf(stderr, "I found a satellite!");
-        fprintf(stdout, "Time: %s \n
-                         Longitude: %f %c\n
-                         Latitude: %f %c\n",
+        fprintf(stdout, "Time: %s \n Longitude: %f %c\n Latitude: %f %c\n",
                          timebuffer, gpsdata->fix.longitude, (gpsdata->fix.longitude < 0) ? 'W' : 'E',
                          gpsdata->fix.latitude, (gpsdata->fix.latitude < 0) ? 'S' : 'N');
 
