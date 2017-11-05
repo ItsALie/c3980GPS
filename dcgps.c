@@ -3,6 +3,7 @@
 #include "gps-utils.h"
 #include "dcgps.h"
 #include <stdlib.h>
+#include <pthread.h>
 
 
 static struct fixsource_t source;
@@ -21,10 +22,6 @@ int main(void)
     gps_stream(gpsdata, WATCH_ENABLE | WATCH_JSON, NULL);
     fprintf(stderr, "Exited after gps_stream()\n");
 
-
-    //gps_stream(gpsdata, WATCH_DISABLE, NULL);
-    //fprintf(stderr, "Exited after gps_stream()\n");
-
     readGPS(gpsdata);
     fprintf(stderr, "Exited after readGPS()\n");
 
@@ -34,9 +31,4 @@ int main(void)
     free(gpsdata);
     fprintf(stderr, "Exited after free()\n");
     return 0;
-}
-
-
-bool validateSatellite(struct gps_data_t* gpsdata) {
-    return false;
 }
