@@ -20,7 +20,7 @@ prints:
 */
 void YourPrintDataFunction(struct gps_data_t* gpsdata)
 {
-    char* timebuffer[64];
+    char timebuffer[64];
     for (size_t i = 0; i < MAXCHANNELS; i++)
     {
         //fprintf(stderr, "Inside first for loop\n");
