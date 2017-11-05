@@ -39,7 +39,7 @@ void YourPrintDataFunction(struct gps_data_t* gpsdata)
     if (gpsdata->satellites_visible != 0)
     {
         memset(timebuffer, 0, sizeof(timebuffer));
-        fprintf(stderr, "%s", timebuffer);
+//        fprintf(stderr, "%s", timebuffer);
         (void)unix_to_iso8601(gpsdata->fix.time, timebuffer, sizeof(timebuffer));
 
         fprintf(stderr, "I found a satellite!");
