@@ -43,7 +43,7 @@ void YourPrintDataFunction(struct gps_data_t* gpsdata)
             if (i < gpsdata->satellites_visible)
             {
                 memset(timebuffer, 0, sizeof(timebuffer));
-                (void)unix_to_iso8601(gpsdata->fix.time, &timebuffer, sizeof(timebuffer));
+                (void)unix_to_iso8601(gpsdata->fix.time, timebuffer, sizeof(timebuffer));
                 fprintf(stdout,
 				   " Time: %s    PRN: %3d\n  Elevation: %02d\n   Azimuth: %03d\n   SS: %02d\n    Longitude: %f %c    Latidtude: %f %c     Used: %c\n",
 				   timebuffer,
