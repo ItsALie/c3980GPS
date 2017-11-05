@@ -20,7 +20,7 @@ prints:
 */
 void YourPrintDataFunction(struct gps_data_t* gpsdata)
 {
-    char timebuffer[64];
+    char timebuffer[128];
 
     for (size_t i = 0; i < MAXCHANNELS; i++)
     {
@@ -42,7 +42,7 @@ void YourPrintDataFunction(struct gps_data_t* gpsdata)
         (void)unix_to_iso8601(gpsdata->fix.time, timebuffer, sizeof(timebuffer));
 
         fprintf(stderr, "I found a satellite!");
-        fprintf(stdout, "Time: %s\n
+        fprintf(stdout, "Time: %s \n
                          Longitude: %f %c\n
                          Latitude: %f %c\n",
                          timebuffer, gpsdata->fix.longitude, (gpsdata->fix.longitude < 0) ? 'W' : 'E',
