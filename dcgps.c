@@ -7,7 +7,6 @@
 
 static struct fixsource_t source;
 
-
 int main(void)
 {
     fprintf(stdout, "Starting Program!");

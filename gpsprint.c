@@ -4,11 +4,7 @@
 #define MAXCHANNELS 72
 #define MAX_POSSIBLE_SATS (MAXCHANNELS - 2)
 
-
-
 bool usedflags[MAXCHANNELS];
-char databuffer[256];
-
 
 /*
 print function here
@@ -44,10 +40,10 @@ void YourPrintDataFunction(struct gps_data_t* gpsdata)
         {
             if (i < gpsdata->satellites_visible)
             {
+                (void)unix_to_iso8601(gpsdata->fix.time, timebuffer, sizeof(timebuffer));
                 fprintf(stdout,
-				   " Time: %f    PRN: %3d\n  Elevation: %02d\n   Azimuth: %03d\n   SS: %02d\n    Longitude: %s %c    Latidtude: %s %c     Used: %c\n",
-				   gpsdata->fix.time,
-                   gpsdata->PRN[i],
+				   "Time: %s\n    PRN: %3d\n  Elevation: %02d\n   Azimuth: %03d\n   SS: %02d\n    Longitude: %s %c    Latitude: %s %c     Used: %c\n",
+				   timebuffer, gpsdata->PRN[i],
 				   gpsdata->elevation[i],
                    gpsdata->azimuth[i],
 				   (int)gpsdata->ss[i],
