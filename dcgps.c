@@ -22,11 +22,11 @@ int main(void)
     gps_stream(gpsdata, WATCH_ENABLE | WATCH_JSON, NULL);
     fprintf(stderr, "Exited after gps_stream()\n");
 
-    /*pthread_t readThread;
-    void* readGPSptr(struct gps_data_t*);
-    int pthread_create(&readThread, NULL, readGPSptr, NULL);*/
+    pthread_t readThread;
 
-    readGPS(gpsdata);
+    int pthread_create(&readThread, NULL, &readGPS, NULL);
+
+    //readGPS(gpsdata);
     fprintf(stderr, "Exited after readGPS()\n");
 
     gps_close(gpsdata);
