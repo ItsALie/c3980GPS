@@ -1,10 +1,9 @@
+#include <stdlib.h>
+#include <pthread.h>
 #include <gps.h>
 #include "gpsprint.h"
 #include "gps-utils.h"
 #include "dcgps.h"
-#include <stdlib.h>
-#include <pthread.h>
-
 
 static struct fixsource_t source;
 
@@ -22,9 +21,9 @@ int main(void)
     gps_stream(gpsdata, WATCH_ENABLE | WATCH_JSON, NULL);
     fprintf(stderr, "Exited after gps_stream()\n");
 
-    pthread_t readThread;
+    pthread_t tid;
 
-    int pthread_create(&readThread, NULL, &readGPS, NULL);
+    int pthread_create(&tid, NULL, (void*) &readGPS, NULL);
 
     //readGPS(gpsdata);
     fprintf(stderr, "Exited after readGPS()\n");
