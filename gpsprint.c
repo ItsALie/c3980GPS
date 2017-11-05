@@ -51,14 +51,14 @@ void YourPrintDataFunction(struct gps_data_t* gpsdata)
             if (i < gpsdata->satellites_visible)
             {
                 fprintf(stdout,
-				   "SatNo: %d\n PRN: %3d\n Elevation: %02d\n Azimuth: %03d\n SS: %02ddB\n    Used: %c\n",
+				   "SatNo: %d\t\t PRN: %3d\t\t Elevation: %02d\t\t Azimuth: %03d\t\t SS: %02ddB\t\t    Used: %c\n",
                    i,
                    gpsdata->PRN[i],
 				   gpsdata->elevation[i],
                    gpsdata->azimuth[i],
 				   (int)gpsdata->ss[i],
                     usedflags[i] ? 'Y' : 'N');
-                fprintf(stdout, "------------------------------------\n\n");
+                fprintf(stdout, "-----------------------------------------------------\n\n");
             }
         }
     }
