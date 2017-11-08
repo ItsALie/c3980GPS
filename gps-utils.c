@@ -135,10 +135,12 @@ char* validateData(struct gps_data_t* gpsdata)
     if (isnan(gpsdata->fix.longitude) == 0)
     {
         snprintf(longBuff, sizeof(longBuff), "%s", convertLatLong(fabsf(gpsdata->fix.longitude)));
-        longCharStr[0] = ' ';
     }
     else
+    {
         snprintf(longBuff, sizeof(longBuff), "n/a");
+        longCharStr[0] = ' ';
+    }
     strcat(str, longBuff);
     strcat(str, longCharStr);
 
@@ -146,10 +148,12 @@ char* validateData(struct gps_data_t* gpsdata)
     if(isnan(gpsdata->fix.latitude) == 0)
     {
         snprintf(latBuff, sizeof(latBuff), "%s", convertLatLong(fabsf(gpsdata->fix.latitude)));
-        latCharStr[0] = ' ';
     }
     else
+    {
         snprintf(latBuff, sizeof(latBuff), "n/a");
+        latCharStr[0] = ' ';
+    }
     strcat(str, latBuff);
     strcat(str, latCharStr);
 
