@@ -78,7 +78,7 @@ void YourPrintDataFunction(struct gps_data_t* gpsdata)
             if (i < gpsdata->satellites_visible)
             {
                 fprintf(stdout,
-				   "SatNo: %d\t PRN: %3d\t Elevation: %02d\t Azimuth: %03d\t SS: %02ddB\t    Used: %c\n",
+				   "SatNo: %d |  PRN: %3d\t Elevation: %02d\t Azimuth: %03d\t SS: %02ddB\t    Used: %c\n",
                    i,
                    gpsdata->PRN[i],
 				   gpsdata->elevation[i],
