@@ -107,16 +107,20 @@ char* validateData(struct gps_data_t* gpsdata)
 {
     char timebuffer[64];
     char str[512];
+    char latBuff[20];
+    char longBuff[20];
     memset(timebuffer, 0, sizeof(timebuffer));
     fprintf(stderr, "%s", timebuffer);
     (void)unix_to_iso8601(gpsdata->fix.time, timebuffer, sizeof(timebuffer));
     strcpy(str, "Time: ");
     strcat(str, timebuffer);
     strcat(str, "\nLongitude: ");
+    snprintf(longBuff, sizeof(longBuff), "%f", gpsdata->fix.longitude);
     strcat(str, gpsdata->fix.longitude);
     strcat(str, (gpsdata->fix.longitude < 0) ? 'W' : 'E')
     strcat(str, "\nLatitude: ");
-    strcat(str, gpsdata->fix.latitude);
+    snprintf(latBuff, sizeof(latBuff), "%f", gpsdata->fix.latitude);
+    strcat(str, latBuff);
     strcat(str, (gpsdata->fix.latitude < 0) ? 'S' : 'N');
     strcat(str, "\n");
     return &str[0];
