@@ -32,6 +32,8 @@
 
 bool reading = TRUE;
 //const char *str = (char *) malloc(sizeof(char) * 512);
+char str[512];
+
 
 /*------------------------------------------------------------------------------------------------------------------
 -- FUNCTION: readGPS
@@ -106,7 +108,6 @@ void readGPS(struct gps_data_t* gpsdata)
 char* validateData(struct gps_data_t* gpsdata)
 {
     char timebuffer[64];
-    char str[512];
     char latBuff[20];
     char longBuff[20];
     char longChar = ((gpsdata->fix.longitude < 0) ? 'W' : 'E');
