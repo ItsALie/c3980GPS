@@ -9,7 +9,7 @@
 --
 -- DATE: November 8, 2017
 --
--- REVISIONS: 
+-- REVISIONS:
 --
 -- DESIGNER: Wilson Hu
 --
@@ -50,7 +50,7 @@ bool usedflags[MAXCHANNELS];
 --
 -- NOTES:
 -- This function prints information about satelites including Timestamp (UTC),
--- Lat/Long, PRN, elevation, azimuth, SNR, and a  Used flag (y/n). 
+-- Lat/Long, PRN, elevation, azimuth, SNR, and a  Used flag (y/n).
 ----------------------------------------------------------------------------------------------------------------------*/
 void YourPrintDataFunction(struct gps_data_t* gpsdata)
 {
@@ -72,20 +72,20 @@ void YourPrintDataFunction(struct gps_data_t* gpsdata)
     {
         char *validGPSData = validateData(gpsdata);
         fprintf(stdout, "%s", validGPSData);
-        
+
         for (int i = 0; i < MAX_POSSIBLE_SATS; i++)
         {
             if (i < gpsdata->satellites_visible)
             {
                 fprintf(stdout,
-				   "SatNo: %d\n PRN: %3d\n Elevation: %02d\n Azimuth: %03d\n SS: %02ddB\n    Used: %c\n",
+				   "SatNo: %d\t PRN: %3d\t Elevation: %02d\t Azimuth: %03d\t SS: %02ddB\t    Used: %c\n",
                    i,
                    gpsdata->PRN[i],
 				   gpsdata->elevation[i],
                    gpsdata->azimuth[i],
 				   (int)gpsdata->ss[i],
                     usedflags[i] ? 'Y' : 'N');
-                fprintf(stdout, "------------------------------------\n\n");
+                fprintf(stdout, "-------------------------------------------------------------------------\n\n");
             }
         }
     }
