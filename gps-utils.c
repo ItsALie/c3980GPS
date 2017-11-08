@@ -23,6 +23,7 @@
 ----------------------------------------------------------------------------------------------------------------------*/
 #include "dcgps.h"
 #include "gpsprint.h"
+#include "gps-utils.h"
 #include <errno.h>
 #include <string.h>
 #include <stdlib.h>
