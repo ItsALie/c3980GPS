@@ -167,6 +167,6 @@ char * convertLatLong(float number)
     minutes = (int)(60 * (number - degrees));
     seconds = (int)(3600 * (number - degrees) - (60 * minutes));
     
-    sprintf(position, "%d\370 %d'%d\" ", degrees, minutes, seconds);
+    sprintf(position, "%d° %d'%d\" ", degrees, minutes, seconds);
     return &position[0];
 }
