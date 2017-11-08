@@ -55,13 +55,13 @@ static struct fixsource_t source;
 ----------------------------------------------------------------------------------------------------------------------*/
 int main(void)
 {
-    fprintf(stdout, "Starting Program!");
     struct gps_data_t *gpsdata = malloc(sizeof(struct gps_data_t));
     if (gps_open(source.server, source.port, gpsdata) == -1)
     {
-        fprintf(stderr, "Exited at gps_open()\n");
-        //errors
-        //fprintf(stderr, "%s\n", gps_errstr(err));
+        fprintf(stderr, "Unable to open GPS\n");
+        free(gpsdata);
+        return -1;
+
     }
 
     gps_stream(gpsdata, WATCH_ENABLE | WATCH_JSON, NULL);
