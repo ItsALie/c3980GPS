@@ -109,29 +109,41 @@ char* validateData(struct gps_data_t* gpsdata)
 {
     memset(str, 0, sizeof(str));
     char timebuffer[64];
-    char latBuff[100];
+    
     char longBuff[100];
     char longChar = ((gpsdata->fix.longitude < 0) ? 'W' : 'E');
     char longCharStr[2];
     longCharStr[0] = longChar;
     longCharStr[1] = '\0';
+    
+    char latBuff[100];
     char latChar = ((gpsdata->fix.latitude < 0) ? 'S' : 'N');
     char latCharStr[2];
     latCharStr[0] = latChar;
     latCharStr[1] = '\0';
+    
     memset(timebuffer, 0, sizeof(timebuffer));
     fprintf(stderr, "%s", timebuffer);
     (void)unix_to_iso8601(gpsdata->fix.time, timebuffer, sizeof(timebuffer));
     strcpy(str, "Time: ");
     strcat(str, timebuffer);
+    
     strcat(str, "\nLongitude: ");
-    snprintf(longBuff, sizeof(longBuff), "%f", gpsdata->fix.longitude);
+    if (isnan(gpsdata->fix.longitude) != 0)
+        snprintf(longBuff, sizeof(longBuff), "%f", gpsdata->fix.longitude);
+    else
+        snprintf(longBuff, sizeof(longBuff), "n/a");
     strcat(str, longBuff);
     strcat(str, longCharStr);
+    
     strcat(str, "\nLatitude: ");
-    snprintf(latBuff, sizeof(latBuff), "%f", gpsdata->fix.latitude);
+    if(isnan(gpsdata->fix.latitude) != 0)
+        snprintf(latBuff, sizeof(latBuff), "%f", gpsdata->fix.latitude);
+    else
+        snprintf(latBuff, sizeof(latBuff), "n/a");
     strcat(str, latBuff);
     strcat(str, latCharStr);
+    
     strcat(str, "\n");
     printf(stdout, "Exited validate data");
     return &str[0];
