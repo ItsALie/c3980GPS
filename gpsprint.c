@@ -24,6 +24,7 @@
 
 #include "dcgps.h"
 #include "gpsprint.h"
+#include "gps-utils.h"
 #include <string.h>
 #define MAXCHANNELS 72
 #define MAX_POSSIBLE_SATS (MAXCHANNELS - 2)
