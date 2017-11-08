@@ -54,13 +54,13 @@ bool usedflags[MAXCHANNELS];
 ----------------------------------------------------------------------------------------------------------------------*/
 void YourPrintDataFunction(struct gps_data_t* gpsdata)
 {
-    char timebuffer[64];
+    //char timebuffer[64];
 
-    for (size_t i = 0; i < MAXCHANNELS; i++)
+    for (int i = 0; i < MAXCHANNELS; i++)
     {
         //fprintf(stderr, "Inside first for loop\n");
         usedflags[i] = false;
-        for(size_t j = 0; j < gpsdata->satellites_used; j++)
+        for(int j = 0; j < gpsdata->satellites_used; j++)
         {
             //fprintf(stderr, "Inside the inside loop\n");
             if (gpsdata->used[j] == gpsdata->PRN[i])

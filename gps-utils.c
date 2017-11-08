@@ -26,6 +26,7 @@
 #include <errno.h>
 #include <string.h>
 #include <stdlib.h>
+#include <math.h>
 
 #define MAXCHANNELS 72
 #define MAX_POSSIBLE_SATS (MAXCHANNELS - 2)
