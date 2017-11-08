@@ -110,7 +110,6 @@ void readGPS(struct gps_data_t* gpsdata)
 ----------------------------------------------------------------------------------------------------------------------*/
 char* validateData(struct gps_data_t* gpsdata)
 {
-    fprintf(stderr, "ENTERING VALIDATEDATA\n");
     memset(str, 0, sizeof(str));
     char timebuffer[64];
     
@@ -134,7 +133,6 @@ char* validateData(struct gps_data_t* gpsdata)
     strcat(str, timebuffer);
     
     strcat(str, "\nLongitude: ");
-    fprintf(stderr, "before longitude\n");
     if (isnan(gpsdata->fix.longitude) == 0)
         snprintf(longBuff, sizeof(longBuff), "%s", convertLatLong(fabsf(gpsdata->fix.longitude)));
         
@@ -144,7 +142,6 @@ char* validateData(struct gps_data_t* gpsdata)
     strcat(str, longCharStr);
     
     strcat(str, "\nLatitude: ");
-    fprintf(stderr, "before latitude\n");
     if(isnan(gpsdata->fix.latitude) == 0)
         snprintf(latBuff, sizeof(latBuff), "%s", convertLatLong(fabsf(gpsdata->fix.latitude)));
     else
@@ -153,7 +150,6 @@ char* validateData(struct gps_data_t* gpsdata)
     strcat(str, latCharStr);
     
     strcat(str, "\n");
-    fprintf(stderr, "Exited validate data");
     return &str[0];
 }
 

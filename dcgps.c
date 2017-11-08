@@ -65,15 +65,11 @@ int main(void)
     }
 
     gps_stream(gpsdata, WATCH_ENABLE | WATCH_JSON, NULL);
-    fprintf(stderr, "Exited after gps_stream()\n");
 
     readGPS(gpsdata);
-    fprintf(stderr, "Exited after readGPS()\n");
 
     gps_close(gpsdata);
-    fprintf(stderr, "Exited after gps_close()\n");
 
     free(gpsdata);
-    fprintf(stderr, "Exited after free()\n");
     return 0;
 }
