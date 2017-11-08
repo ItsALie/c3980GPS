@@ -63,7 +63,12 @@ void readGPS(struct gps_data_t* gpsdata)
 {
     while(reading)
     {
-        if(gps_waiting(gpsdata, 500000000))
+        //Timeout set to 5s or 5000000microseconds
+        if(!gps_waiting(gpsdata, 5000000))
+        {
+            fprintf(stderr, "I definitely timed out.\n");
+        }
+        else
         {
             errno = 0;
             if(gps_read(gpsdata) == -1)
@@ -82,8 +87,7 @@ void readGPS(struct gps_data_t* gpsdata)
                 }
             }
         }
-        fprintf(stderr, "timed out without reading satellites\n");
-        //break;
+        fprintf(stderr, "timed out\n");
     }
 }
 
