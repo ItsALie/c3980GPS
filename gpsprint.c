@@ -54,7 +54,7 @@ bool usedflags[MAXCHANNELS];
 ----------------------------------------------------------------------------------------------------------------------*/
 void YourPrintDataFunction(struct gps_data_t* gpsdata)
 {
-
+    fprintf(stderr, "calling print\n");
     for (int i = 0; i < MAXCHANNELS; i++)
     {
         usedflags[i] = false;
@@ -89,5 +89,9 @@ void YourPrintDataFunction(struct gps_data_t* gpsdata)
                 fprintf(stdout, "-------------------------------------------------------------------------\n\n");
             }
         }
+    }
+    else
+    {
+        fprintf(stderr, "No satellites visible.\n");
     }
 }
