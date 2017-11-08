@@ -83,7 +83,7 @@ void YourPrintDataFunction(struct gps_data_t* gpsdata)
                          // timebuffer, gpsdata->fix.longitude, (gpsdata->fix.longitude < 0) ? 'W' : 'E',
                          // gpsdata->fix.latitude, (gpsdata->fix.latitude < 0) ? 'S' : 'N');
         fprintf(stderr, "I printed. What do you want from me?\n");
-        for (size_t i = 0; i < MAX_POSSIBLE_SATS; i++)
+        for (int i = 0; i < MAX_POSSIBLE_SATS; i++)
         {
             fprintf(stderr, "FOR LOOP ME.\n");
             if (i < gpsdata->satellites_visible)
