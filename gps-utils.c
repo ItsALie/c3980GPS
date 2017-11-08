@@ -30,6 +30,7 @@
 #define MAX_POSSIBLE_SATS (MAXCHANNELS - 2)
 
 bool reading = TRUE;
+char *str = (char *) malloc(sizeof(char) * 512);
 
 /*------------------------------------------------------------------------------------------------------------------
 -- FUNCTION: readGPS
@@ -101,24 +102,21 @@ void readGPS(struct gps_data_t* gpsdata)
 -- NOTES:
 --
 ----------------------------------------------------------------------------------------------------------------------*/
-void validateData(struct gps_data_t* gpsdata)
+char* validateData(struct gps_data_t* gpsdata)
 {
-    /*struct read_data read;
-
-    for (size_t i = 0; i < MAXCHANNELS; i++)
-    {
-        usedflags[i] = false;
-        for (size_t j = 0; j < gps_data->satellites_used; j++)
-        {
-            if (gpsdata->used[j] == gpsdata->PRN[i])
-            {
-                usedflags[i] = true;
-            }
-        }
-    }
-
-    if (gpsdata->satellites_visible != 0)
-    {
-
-    }*/
+    memset(timebuffer, 0, sizeof(timebuffer));
+    fprintf(stderr, "%s", timebuffer);
+    (void)unix_to_iso8601(gpsdata->fix.time, timebuffer, sizeof(timebuffer));
+    fprintf(str, "Time: ");
+    strcat(str, timebuffer);
+    strcat(str, "\n");
+    strcat(str, "Longitude: ");
+    strcat(str, gpsdata->fix.longitude);
+    strcat(str, (gpsdata->fix.longitude < 0) ? 'W' : 'E')
+    strcat(str, "\n");
+    strcat(str, "Latitude: ");
+    strcat(str, gpsdata->fix.latitude);
+    strcat(str, (gpsdata->fix.latitude < 0) ? 'S' : 'N');
+    strcat(str, "\n");
+    return str;
 }

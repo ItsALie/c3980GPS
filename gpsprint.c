@@ -71,16 +71,16 @@ void YourPrintDataFunction(struct gps_data_t* gpsdata)
 
     if (gpsdata->satellites_visible != 0)
     {
-        memset(timebuffer, 0, sizeof(timebuffer));
-        fprintf(stderr, "%s", timebuffer);
-        (void)unix_to_iso8601(gpsdata->fix.time, timebuffer, sizeof(timebuffer));
-
-        fprintf(stderr, "I found a satellite!");
-        fprintf(stdout, "Time: %s\n
-                         Longitude: %f %c\n
-                         Latitude: %f %c\n",
-                         timebuffer, gpsdata->fix.longitude, (gpsdata->fix.longitude < 0) ? 'W' : 'E',
-                         gpsdata->fix.latitude, (gpsdata->fix.latitude < 0) ? 'S' : 'N');
+        char *validGPSData = validateData(gpsdata);
+        fprintf(stdout, "%s", validGPSData);
+        // memset(timebuffer, 0, sizeof(timebuffer));
+        // fprintf(stderr, "%s", timebuffer);
+        // (void)unix_to_iso8601(gpsdata->fix.time, timebuffer, sizeof(timebuffer));
+        // fprintf(stdout, "Time: %s\n
+                         // Longitude: %f %c\n
+                         // Latitude: %f %c\n",
+                         // timebuffer, gpsdata->fix.longitude, (gpsdata->fix.longitude < 0) ? 'W' : 'E',
+                         // gpsdata->fix.latitude, (gpsdata->fix.latitude < 0) ? 'S' : 'N');
         for (size_t i = 0; i < MAX_POSSIBLE_SATS; i++)
         {
             if (i < gpsdata->satellites_visible)
