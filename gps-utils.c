@@ -31,7 +31,7 @@
 #define MAX_POSSIBLE_SATS (MAXCHANNELS - 2)
 
 bool reading = TRUE;
-const char *str = (char *) malloc(sizeof(char) * 512);
+//const char *str = (char *) malloc(sizeof(char) * 512);
 
 /*------------------------------------------------------------------------------------------------------------------
 -- FUNCTION: readGPS
@@ -106,6 +106,7 @@ void readGPS(struct gps_data_t* gpsdata)
 char* validateData(struct gps_data_t* gpsdata)
 {
     char timebuffer[64];
+    char str[512];
     memset(timebuffer, 0, sizeof(timebuffer));
     fprintf(stderr, "%s", timebuffer);
     (void)unix_to_iso8601(gpsdata->fix.time, timebuffer, sizeof(timebuffer));
@@ -118,5 +119,5 @@ char* validateData(struct gps_data_t* gpsdata)
     strcat(str, gpsdata->fix.latitude);
     strcat(str, (gpsdata->fix.latitude < 0) ? 'S' : 'N');
     strcat(str, "\n");
-    return str;
+    return &str[0];
 }
