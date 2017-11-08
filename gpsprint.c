@@ -58,11 +58,9 @@ void YourPrintDataFunction(struct gps_data_t* gpsdata)
 
     for (int i = 0; i < MAXCHANNELS; i++)
     {
-        //fprintf(stderr, "Inside first for loop\n");
         usedflags[i] = false;
         for(int j = 0; j < gpsdata->satellites_used; j++)
         {
-            //fprintf(stderr, "Inside the inside loop\n");
             if (gpsdata->used[j] == gpsdata->PRN[i])
             {
                 usedflags[i] = true;
@@ -82,13 +80,10 @@ void YourPrintDataFunction(struct gps_data_t* gpsdata)
                          // Latitude: %f %c\n",
                          // timebuffer, gpsdata->fix.longitude, (gpsdata->fix.longitude < 0) ? 'W' : 'E',
                          // gpsdata->fix.latitude, (gpsdata->fix.latitude < 0) ? 'S' : 'N');
-        fprintf(stderr, "I printed. What do you want from me?\n");
         for (int i = 0; i < MAX_POSSIBLE_SATS; i++)
         {
-            fprintf(stderr, "FOR LOOP ME.\n");
             if (i < gpsdata->satellites_visible)
             {
-                fprintf(stderr, "I'm reading satellites   ---   %d\n", i);
                 fprintf(stdout,
 				   "SatNo: %d\n PRN: %3d\n Elevation: %02d\n Azimuth: %03d\n SS: %02ddB\n    Used: %c\n",
                    i,
