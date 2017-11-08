@@ -66,7 +66,7 @@ void readGPS(struct gps_data_t* gpsdata)
         //Timeout set to 5s or 5000000microseconds
         if(!gps_waiting(gpsdata, 5000000))
         {
-            fprintf(stderr, "Timeout without reading satellites, program exiting.\n");
+            fprintf(stderr, "Timeout without reading satellites, exiting program.\n");
             break;
         }
         else
@@ -75,14 +75,12 @@ void readGPS(struct gps_data_t* gpsdata)
             if(gps_read(gpsdata) == -1)
             {
                 //Error case
-                fprintf(stderr, "agps: socket error 4 \n");
+                fprintf(stderr, "Error reading gpsdata.\n");
             }
             else
             {
                 if(gpsdata->set)
                 {
-                    //check for errors first
-                    //display, call print here
                     YourPrintDataFunction(gpsdata);
                 }
             }

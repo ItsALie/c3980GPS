@@ -55,6 +55,7 @@ static struct fixsource_t source;
 ----------------------------------------------------------------------------------------------------------------------*/
 int main(void)
 {
+    fprintf(stderr, "Started dcgps.\n");
     struct gps_data_t *gpsdata = malloc(sizeof(struct gps_data_t));
 
     //Establish connection to gpsd daemon
