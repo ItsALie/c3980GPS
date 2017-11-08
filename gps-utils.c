@@ -63,7 +63,7 @@ void readGPS(struct gps_data_t* gpsdata)
 {
     while(reading)
     {
-        if(gps_waiting(gpsdata, 5000000))
+        if(gps_waiting(gpsdata, 50000000))
         {
             errno = 0;
             if(gps_read(gpsdata) == -1)
