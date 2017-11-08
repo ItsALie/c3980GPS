@@ -11,7 +11,7 @@
 --
 -- DATE: November 8, 2017
 --
--- REVISIONS: 
+-- REVISIONS:
 --
 -- DESIGNER: Wilson Hu
 --
@@ -19,7 +19,7 @@
 --
 -- NOTES:
 --      The program will use a GPS dongle to moniter an array of satelites. When a satelite becomes visible
---      the program will print out information about the program.
+--      the program will print out information about the gps fix and each satellite that it reads.
 --
 ----------------------------------------------------------------------------------------------------------------------*/
 
@@ -38,7 +38,7 @@ static struct fixsource_t source;
 --
 -- DATE: November 8, 2017
 --
--- REVISIONS: 
+-- REVISIONS:
 --
 -- DESIGNER: Wilson Hu
 --
@@ -56,6 +56,8 @@ static struct fixsource_t source;
 int main(void)
 {
     struct gps_data_t *gpsdata = malloc(sizeof(struct gps_data_t));
+
+    //Establish connection to gpsd daemon
     if (gps_open(source.server, source.port, gpsdata) == -1)
     {
         fprintf(stderr, "Unable to open GPS\n");
@@ -64,6 +66,7 @@ int main(void)
 
     }
 
+    //Set watch policy to read for JSON objects
     gps_stream(gpsdata, WATCH_ENABLE | WATCH_JSON, NULL);
 
     readGPS(gpsdata);
