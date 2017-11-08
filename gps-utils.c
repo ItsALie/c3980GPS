@@ -109,8 +109,8 @@ char* validateData(struct gps_data_t* gpsdata)
     char str[512];
     char latBuff[20];
     char longBuff[20];
-    char longChar = ((gpsdata->fix.longitude < 0) ? 'W' : 'E'));
-    char latChar = ((gpsdata->fix.latitude < 0) ? 'S' : 'N'));
+    char longChar = ((gpsdata->fix.longitude < 0) ? 'W' : 'E');
+    char latChar = ((gpsdata->fix.latitude < 0) ? 'S' : 'N');
     memset(timebuffer, 0, sizeof(timebuffer));
     fprintf(stderr, "%s", timebuffer);
     (void)unix_to_iso8601(gpsdata->fix.time, timebuffer, sizeof(timebuffer));
