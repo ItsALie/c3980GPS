@@ -25,6 +25,7 @@
 #include "gpsprint.h"
 #include <errno.h>
 #include <string.h>
+#include <stdlib.h>
 
 #define MAXCHANNELS 72
 #define MAX_POSSIBLE_SATS (MAXCHANNELS - 2)
@@ -94,27 +95,26 @@ void readGPS(struct gps_data_t* gpsdata)
 --
 -- PROGRAMMER: Haley Booker
 --
--- INTERFACE: void validateData(struct gps_data_t* gpsdata)
+-- INTERFACE: char* validateData(struct gps_data_t* gpsdata)
 -- struct gps_data_t* gpsdata: the gps data
 --
--- RETURNS: void.
+-- RETURNS: char* of the valid data to be printed
 --
 -- NOTES:
 --
 ----------------------------------------------------------------------------------------------------------------------*/
 char* validateData(struct gps_data_t* gpsdata)
 {
+    char timebuffer[64];
     memset(timebuffer, 0, sizeof(timebuffer));
     fprintf(stderr, "%s", timebuffer);
     (void)unix_to_iso8601(gpsdata->fix.time, timebuffer, sizeof(timebuffer));
     fprintf(str, "Time: ");
     strcat(str, timebuffer);
-    strcat(str, "\n");
-    strcat(str, "Longitude: ");
+    strcat(str, "\nLongitude: ");
     strcat(str, gpsdata->fix.longitude);
     strcat(str, (gpsdata->fix.longitude < 0) ? 'W' : 'E')
-    strcat(str, "\n");
-    strcat(str, "Latitude: ");
+    strcat(str, "\nLatitude: ");
     strcat(str, gpsdata->fix.latitude);
     strcat(str, (gpsdata->fix.latitude < 0) ? 'S' : 'N');
     strcat(str, "\n");
