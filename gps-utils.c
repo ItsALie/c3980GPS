@@ -134,7 +134,7 @@ char* validateData(struct gps_data_t* gpsdata)
     strcat(str, "\nLongitude: ");
     fprintf(stderr, "before longitude\n");
     if (isnan(gpsdata->fix.longitude) == 0)
-        snprintf(longBuff, sizeof(longBuff), "%f", gpsdata->fix.longitude);
+        snprintf(longBuff, sizeof(longBuff), "%f", fabsf(gpsdata->fix.longitude));
     else
         snprintf(longBuff, sizeof(longBuff), "n/a");
     strcat(str, longBuff);
@@ -143,7 +143,7 @@ char* validateData(struct gps_data_t* gpsdata)
     strcat(str, "\nLatitude: ");
     fprintf(stderr, "before latitude\n");
     if(isnan(gpsdata->fix.latitude) == 0)
-        snprintf(latBuff, sizeof(latBuff), "%f", gpsdata->fix.latitude);
+        snprintf(latBuff, sizeof(latBuff), "%f", fabsf(gpsdata->fix.latitude));
     else
         snprintf(latBuff, sizeof(latBuff), "n/a");
     strcat(str, latBuff);
