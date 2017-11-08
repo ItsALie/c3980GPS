@@ -88,6 +88,7 @@ void YourPrintDataFunction(struct gps_data_t* gpsdata)
             fprintf(stderr, "FOR LOOP ME.\n");
             if (i < gpsdata->satellites_visible)
             {
+                fprintf(stderr, "I'm reading satellites   ---   %d\n", i);
                 fprintf(stdout,
 				   "SatNo: %n\n PRN: %3d\n Elevation: %02d\n Azimuth: %03d\n SS: %02ddB\n    Used: %c\n",
                    i,
