@@ -59,7 +59,7 @@ int main(void)
 
     //Establish connection to gpsd daemon
     fprintf(stderr, "before gps_open()");
-    if (gps_open(source.server, source.port, gpsdata) == -1)
+    if (gps_open(source.server, source.port, gpsdata) != 0)
     {
         fprintf(stderr, "Unable to open GPS\n");
         free(gpsdata);
