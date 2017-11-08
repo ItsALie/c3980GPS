@@ -117,11 +117,11 @@ char* validateData(struct gps_data_t* gpsdata)
     strcat(str, "\nLongitude: ");
     snprintf(longBuff, sizeof(longBuff), "%f", gpsdata->fix.longitude);
     strcat(str, longBuff);
-    strcat(str, (gpsdata->fix.longitude < 0) ? 'W' : 'E')
+    strcat(str, &((gpsdata->fix.longitude < 0) ? 'W' : 'E'))
     strcat(str, "\nLatitude: ");
     snprintf(latBuff, sizeof(latBuff), "%f", gpsdata->fix.latitude);
     strcat(str, latBuff);
-    strcat(str, (gpsdata->fix.latitude < 0) ? 'S' : 'N');
+    strcat(str, &((gpsdata->fix.latitude < 0) ? 'S' : 'N'));
     strcat(str, "\n");
     return &str[0];
 }
