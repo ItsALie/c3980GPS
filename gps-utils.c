@@ -31,7 +31,7 @@
 #define MAX_POSSIBLE_SATS (MAXCHANNELS - 2)
 
 bool reading = TRUE;
-char *str = (char *) malloc(sizeof(char) * 512);
+const char *str = (char *) malloc(sizeof(char) * 512);
 
 /*------------------------------------------------------------------------------------------------------------------
 -- FUNCTION: readGPS
