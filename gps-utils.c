@@ -1,3 +1,26 @@
+/*------------------------------------------------------------------------------------------------------------------
+-- SOURCE FILE: gps-utils.c - Reads and validates the gps data.
+--
+-- PROGRAM: dcgps
+--
+-- FUNCTIONS:
+--      void readGPS(struct gps_data_t* gpsdata)
+--      void validateData(struct gps_data_t* gpsdata)
+--
+-- DATE: November 8, 2017
+--
+-- REVISIONS: 
+--
+-- DESIGNER: Wilson Hu
+--
+-- PROGRAMMER: Haley Booker
+--
+-- NOTES:
+--     If the program has read data it will call the print funtion.
+--     The program performs error checking on
+--     on the data and prints the information for visible satelites.
+--
+----------------------------------------------------------------------------------------------------------------------*/
 #include "dcgps.h"
 #include "gpsprint.h"
 #include <errno.h>
@@ -8,9 +31,28 @@
 
 bool reading = TRUE;
 
-/*
-read loop function here
-*/
+/*------------------------------------------------------------------------------------------------------------------
+-- FUNCTION: readGPS
+--
+-- DATE: November 8, 2017
+--
+-- REVISIONS:
+--
+-- DESIGNER: Wilson Hu
+--
+-- PROGRAMMER: Haley Booker
+--
+-- INTERFACE: void readGPS(struct gps_data_t* gpsdata)
+-- struct gps_data_t* gpsdata: the gps data
+--
+-- RETURNS: void.
+--
+-- NOTES:
+--      This program will continuously check if there is input to be read. If
+--      there is input it will try to read the data. If the data is read it will
+--      be validated then printed.
+--
+----------------------------------------------------------------------------------------------------------------------*/
 void readGPS(struct gps_data_t* gpsdata)
 {
     while(reading)
@@ -40,10 +82,25 @@ void readGPS(struct gps_data_t* gpsdata)
     }
 }
 
-/*
-error checking function here
-*/
-
+/*------------------------------------------------------------------------------------------------------------------
+-- FUNCTION: validateData
+--
+-- DATE: November 8, 2017
+--
+-- REVISIONS:
+--
+-- DESIGNER: Wilson Hu
+--
+-- PROGRAMMER: Haley Booker
+--
+-- INTERFACE: void validateData(struct gps_data_t* gpsdata)
+-- struct gps_data_t* gpsdata: the gps data
+--
+-- RETURNS: void.
+--
+-- NOTES:
+--
+----------------------------------------------------------------------------------------------------------------------*/
 void validateData(struct gps_data_t* gpsdata)
 {
     /*struct read_data read;
@@ -65,9 +122,3 @@ void validateData(struct gps_data_t* gpsdata)
 
     }*/
 }
-
-/*void clearReadData(struct satellite_data* sat)
-{
-    memset(sat->timebuffer, 0, sizeof(timebuffer));
-    memset(sat->elevation, 0, sizeof(elevation));
-}*/

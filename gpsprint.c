@@ -1,3 +1,27 @@
+/*------------------------------------------------------------------------------------------------------------------
+-- SOURCE FILE: gpsprint.c - The display portion of the application.
+--
+-- PROGRAM: dcgps
+--
+-- FUNCTIONS:
+--      void YourPrintDataFunction(struct gps_data_t* gpsdata)
+--
+--
+-- DATE: November 8, 2017
+--
+-- REVISIONS: 
+--
+-- DESIGNER: Wilson Hu
+--
+-- PROGRAMMER: Haley Booker, Wilson Hu
+--
+-- NOTES:
+--     If the program has read data it will call the print funtion.
+--     The program performs error checking on
+--     on the data and prints the information for visible satelites.
+--
+----------------------------------------------------------------------------------------------------------------------*/
+
 #include "dcgps.h"
 #include "gpsprint.h"
 #include <string.h>
@@ -7,17 +31,26 @@
 
 bool usedflags[MAXCHANNELS];
 
-/*
-print function here
-prints:
-    Timestamp (UTC)
-    Lat/Long
-    PRN
-    elevation
-    azimuth
-    SNR
-    Used flag (y/n)
-*/
+/*------------------------------------------------------------------------------------------------------------------
+-- FUNCTION: YourPrintDataFunction
+--
+-- DATE: November 8, 2017
+--
+-- REVISIONS:
+--
+-- DESIGNER: Wilson Hu
+--
+-- PROGRAMMER: Haley Booker, Wilson Hu
+--
+-- INTERFACE: void YourPrintDataFunction(struct gps_data_t* gpsdata)
+-- struct gps_data_t* gpsdata: the gps data
+--
+-- RETURNS: void.
+--
+-- NOTES:
+-- This function prints information about satelites including Timestamp (UTC),
+-- Lat/Long, PRN, elevation, azimuth, SNR, and a  Used flag (y/n). 
+----------------------------------------------------------------------------------------------------------------------*/
 void YourPrintDataFunction(struct gps_data_t* gpsdata)
 {
     char timebuffer[64];
