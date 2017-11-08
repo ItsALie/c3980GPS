@@ -13,7 +13,7 @@
 --
 -- DESIGNER: Wilson Hu
 --
--- PROGRAMMER: Haley Booker, Wilson Hu
+-- PROGRAMMER: Wilson Hu
 --
 -- NOTES:
 --     If the program has read data it will call the print funtion.
@@ -41,7 +41,7 @@ bool usedflags[MAXCHANNELS];
 --
 -- DESIGNER: Wilson Hu
 --
--- PROGRAMMER: Haley Booker, Wilson Hu
+-- PROGRAMMER: Wilson Hu
 --
 -- INTERFACE: void YourPrintDataFunction(struct gps_data_t* gpsdata)
 -- struct gps_data_t* gpsdata: the gps data
