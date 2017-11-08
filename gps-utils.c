@@ -34,6 +34,7 @@
 bool reading = TRUE;
 //const char *str = (char *) malloc(sizeof(char) * 512);
 char str[512];
+char position[20];
 
 
 /*------------------------------------------------------------------------------------------------------------------
@@ -134,7 +135,8 @@ char* validateData(struct gps_data_t* gpsdata)
     strcat(str, "\nLongitude: ");
     fprintf(stderr, "before longitude\n");
     if (isnan(gpsdata->fix.longitude) == 0)
-        snprintf(longBuff, sizeof(longBuff), "%f", fabsf(gpsdata->fix.longitude));
+        snprintf(longBuff, sizeof(longBuff), "%s", convertLatLong(fabsf(gpsdata->fix.longitude)));
+        
     else
         snprintf(longBuff, sizeof(longBuff), "n/a");
     strcat(str, longBuff);
@@ -152,4 +154,18 @@ char* validateData(struct gps_data_t* gpsdata)
     strcat(str, "\n");
     fprintf(stderr, "Exited validate data");
     return &str[0];
+}
+
+char * convertLatLong(float number)
+{
+    int degrees;
+    int minutes;
+    int seconds;
+    
+    degrees = (int) number;
+    minutes = (int)(60 * (number - degrees));
+    seconds = (int)(3600 * (number - degrees) - (60 * minutes));
+    
+    sprintf(position, "%d %d' %d\"", degrees, minutes, seconds);
+    return &position[0];
 }
