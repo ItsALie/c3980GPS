@@ -110,7 +110,7 @@ char* validateData(struct gps_data_t* gpsdata)
     memset(timebuffer, 0, sizeof(timebuffer));
     fprintf(stderr, "%s", timebuffer);
     (void)unix_to_iso8601(gpsdata->fix.time, timebuffer, sizeof(timebuffer));
-    fprintf(str, "Time: ");
+    strcpy(str, "Time: ");
     strcat(str, timebuffer);
     strcat(str, "\nLongitude: ");
     strcat(str, gpsdata->fix.longitude);
