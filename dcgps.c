@@ -66,16 +66,16 @@ int main(void)
         return -1;
 
     }
-    fprintf(stderr, "after gps_open()");
+    fprintf(stderr, "after gps_open()\n");
 
     //Set watch policy to read for JSON objects
-    fprintf(stderr, "before gps_stream()");
+    fprintf(stderr, "before gps_stream()\n");
     gps_stream(gpsdata, WATCH_ENABLE | WATCH_JSON, NULL);
-    fprintf(stderr, "after gps_stream()");
+    fprintf(stderr, "after gps_stream()\n");
 
-    fprintf(stderr, "before readGPS");
+    fprintf(stderr, "before readGPS\n");
     readGPS(gpsdata);
-    fprintf(stderr, "after readGPS");
+    fprintf(stderr, "after readGPS\n");
 
     gps_close(gpsdata);
 
