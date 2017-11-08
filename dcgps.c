@@ -58,6 +58,7 @@ int main(void)
     struct gps_data_t *gpsdata = malloc(sizeof(struct gps_data_t));
 
     //Establish connection to gpsd daemon
+    fprintf(stderr, "before gps_open()");
     if (gps_open(source.server, source.port, gpsdata) == -1)
     {
         fprintf(stderr, "Unable to open GPS\n");
@@ -65,11 +66,16 @@ int main(void)
         return -1;
 
     }
+    fprintf(stderr, "after gps_open()");
 
     //Set watch policy to read for JSON objects
+    fprintf(stderr, "before gps_stream()");
     gps_stream(gpsdata, WATCH_ENABLE | WATCH_JSON, NULL);
+    fprintf(stderr, "after gps_stream()");
 
+    fprintf(stderr, "before readGPS");
     readGPS(gpsdata);
+    fprintf(stderr, "after readGPS");
 
     gps_close(gpsdata);
 
