@@ -54,7 +54,6 @@ bool usedflags[MAXCHANNELS];
 ----------------------------------------------------------------------------------------------------------------------*/
 void YourPrintDataFunction(struct gps_data_t* gpsdata)
 {
-    //char timebuffer[64];
 
     for (int i = 0; i < MAXCHANNELS; i++)
     {
@@ -70,9 +69,11 @@ void YourPrintDataFunction(struct gps_data_t* gpsdata)
 
     if (gpsdata->satellites_visible != 0)
     {
+        //validate gps fix data
         char *validGPSData = validateData(gpsdata);
         fprintf(stdout, "%s", validGPSData);
 
+        //loops through visible satellites and prints sat data
         for (int i = 0; i < MAX_POSSIBLE_SATS; i++)
         {
             if (i < gpsdata->satellites_visible)

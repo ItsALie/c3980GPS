@@ -9,7 +9,7 @@
 --
 -- DATE: November 8, 2017
 --
--- REVISIONS: 
+-- REVISIONS:
 --
 -- DESIGNER: Wilson Hu
 --
@@ -33,9 +33,8 @@
 #define MAX_POSSIBLE_SATS (MAXCHANNELS - 2)
 
 bool reading = TRUE;
-//const char *str = (char *) malloc(sizeof(char) * 512);
-char str[512];
-char position[20];
+char str[512];          //char buffer that holds validated fix data
+char position[20];      //char buffer that holds converted lat/long data
 
 
 /*------------------------------------------------------------------------------------------------------------------
@@ -111,26 +110,27 @@ char* validateData(struct gps_data_t* gpsdata)
 {
     memset(str, 0, sizeof(str));
     char timebuffer[64];
-    
+
     char longBuff[100];
     char longChar = ((gpsdata->fix.longitude < 0) ? 'W' : 'E');
     char longCharStr[2];
     longCharStr[0] = longChar;
     longCharStr[1] = '\0';
-    
+
     char latBuff[100];
     char latChar = ((gpsdata->fix.latitude < 0) ? 'S' : 'N');
     char latCharStr[2];
     latCharStr[0] = latChar;
     latCharStr[1] = '\0';
-    
-    fprintf(stderr, "before time\n");
+
+    //Converts unix timestamp to ISO 8601 datetime and adds it to output string
     memset(timebuffer, 0, sizeof(timebuffer));
     fprintf(stderr, "%s", timebuffer);
     (void)unix_to_iso8601(gpsdata->fix.time, timebuffer, sizeof(timebuffer));
     strcpy(str, "Time: ");
     strcat(str, timebuffer);
-    
+
+    //Validates longitude, converts to deg/min/sec or "n/a" if invalid longitude
     strcat(str, "\nLongitude: ");
     if (isnan(gpsdata->fix.longitude) == 0)
     {
@@ -144,6 +144,7 @@ char* validateData(struct gps_data_t* gpsdata)
     strcat(str, longBuff);
     strcat(str, longCharStr);
 
+    //Validates latitude, converts to deg/min/sec or "n/a" if invalid latitude
     strcat(str, "\nLatitude: ");
     if(isnan(gpsdata->fix.latitude) == 0)
     {
@@ -179,7 +180,7 @@ char* validateData(struct gps_data_t* gpsdata)
 --
 -- NOTES:
 --  Takes a decimal latitude or longitude as a float and converts it. The
---  output string is the latitude or longitutde in degrees, minutes and seconds.
+--  output string is the latitude or longitutde in degrees, minutes, and seconds.
 --
 ----------------------------------------------------------------------------------------------------------------------*/
 
@@ -188,11 +189,11 @@ char * convertLatLong(float number)
     int degrees;
     int minutes;
     int seconds;
-    
+
     degrees = (int) number;
     minutes = (int)(60 * (number - degrees));
     seconds = (int)(3600 * (number - degrees) - (60 * minutes));
-    
+
     sprintf(position, "%d° %d'%d\" ", degrees, minutes, seconds);
     return &position[0];
 }
