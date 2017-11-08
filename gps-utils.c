@@ -146,7 +146,7 @@ char* validateData(struct gps_data_t* gpsdata)
     strcat(str, "\nLatitude: ");
     fprintf(stderr, "before latitude\n");
     if(isnan(gpsdata->fix.latitude) == 0)
-        snprintf(latBuff, sizeof(latBuff), "%f", fabsf(gpsdata->fix.latitude));
+        snprintf(latBuff, sizeof(latBuff), "%s", convertLatLong(fabsf(gpsdata->fix.latitude)));
     else
         snprintf(latBuff, sizeof(latBuff), "n/a");
     strcat(str, latBuff);
@@ -167,6 +167,6 @@ char * convertLatLong(float number)
     minutes = (int)(60 * (number - degrees));
     seconds = (int)(3600 * (number - degrees) - (60 * minutes));
     
-    sprintf(position, "%d\xf8 %d' %d\"", degrees, minutes, seconds);
+    sprintf(position, "%d\xf8 %d'%d\" ", degrees, minutes, seconds);
     return &position[0];
 }
