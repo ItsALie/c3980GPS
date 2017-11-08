@@ -58,13 +58,12 @@ int main(void)
     struct gps_data_t *gpsdata = malloc(sizeof(struct gps_data_t));
 
     //Establish connection to gpsd daemon
-    fprintf(stderr, "before gps_open()");
+    fprintf(stderr, "before gps_open()\n");
     if (gps_open(source.server, source.port, gpsdata) != 0)
     {
         fprintf(stderr, "Unable to open GPS\n");
         free(gpsdata);
         return -1;
-
     }
     fprintf(stderr, "after gps_open()\n");
 

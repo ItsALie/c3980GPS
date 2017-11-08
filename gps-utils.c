@@ -83,7 +83,7 @@ void readGPS(struct gps_data_t* gpsdata)
             }
         }
         fprintf(stderr, "timeout\n");
-        break;
+        //break;
     }
 }
 
