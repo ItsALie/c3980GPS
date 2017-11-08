@@ -85,6 +85,7 @@ void YourPrintDataFunction(struct gps_data_t* gpsdata)
         fprintf(stderr, "I printed. What do you want from me?\n");
         for (size_t i = 0; i < MAX_POSSIBLE_SATS; i++)
         {
+            fprintf(stderr, "FOR LOOP ME.\n");
             if (i < gpsdata->satellites_visible)
             {
                 fprintf(stdout,

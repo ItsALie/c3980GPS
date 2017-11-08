@@ -107,6 +107,7 @@ void readGPS(struct gps_data_t* gpsdata)
 ----------------------------------------------------------------------------------------------------------------------*/
 char* validateData(struct gps_data_t* gpsdata)
 {
+    fprintf(stderr, "ENTERING VALIDATEDATA\n");
     memset(str, 0, sizeof(str));
     char timebuffer[64];
     
@@ -148,6 +149,6 @@ char* validateData(struct gps_data_t* gpsdata)
     strcat(str, latCharStr);
     
     strcat(str, "\n");
-    fprintf(stdout, "Exited validate data");
+    fprintf(stderr, "Exited validate data");
     return &str[0];
 }
