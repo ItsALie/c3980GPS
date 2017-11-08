@@ -64,10 +64,8 @@ void readGPS(struct gps_data_t* gpsdata)
 {
     while(reading)
     {
-        fprintf(stderr, "STIL READING.\n");
-        if(gps_waiting(gpsdata, 500000000))
+        if(gps_waiting(gpsdata, 5000000))
         {
-            //fprintf(stderr, "I made it past waiting!!!\n");
             errno = 0;
             if(gps_read(gpsdata) == -1)
             {
@@ -77,7 +75,6 @@ void readGPS(struct gps_data_t* gpsdata)
             }
             else
             {
-                //fprintf(stderr, "I read something\n");
                 if(gpsdata->set)
                 {
                     //check for errors first
