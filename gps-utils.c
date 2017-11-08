@@ -95,7 +95,7 @@ void readGPS(struct gps_data_t* gpsdata)
 --
 -- DESIGNER: Wilson Hu
 --
--- PROGRAMMER: Haley Booker
+-- PROGRAMMER: Haley Booker, Wilson Hu
 --
 -- INTERFACE: char* validateData(struct gps_data_t* gpsdata)
 -- struct gps_data_t* gpsdata: the gps data
@@ -103,6 +103,8 @@ void readGPS(struct gps_data_t* gpsdata)
 -- RETURNS: char* of the valid data to be printed
 --
 -- NOTES:
+--  Validate the time, longitude and latitude. The function returns the string
+-- to be printed.
 --
 ----------------------------------------------------------------------------------------------------------------------*/
 char* validateData(struct gps_data_t* gpsdata)
@@ -149,6 +151,28 @@ char* validateData(struct gps_data_t* gpsdata)
     strcat(str, "\n");
     return &str[0];
 }
+
+/*------------------------------------------------------------------------------------------------------------------
+-- FUNCTION: convertLatLong
+--
+-- DATE: November 8, 2017
+--
+-- REVISIONS:
+--
+-- DESIGNER: Wilson Hu
+--
+-- PROGRAMMER: Haley Booker
+--
+-- INTERFACE: char * convertLatLong(float number)
+-- float number: the decimal number to be converted
+--
+-- RETURNS: char* of the valid latitude or longitude to be printed
+--
+-- NOTES:
+--  Takes a decimal latitude or longitude as a float and converts it. The
+--  output string is the latitude or longitutde in degrees, minutes and seconds.
+--
+----------------------------------------------------------------------------------------------------------------------*/
 
 char * convertLatLong(float number)
 {
