@@ -55,15 +55,15 @@ static struct fixsource_t source;
 ----------------------------------------------------------------------------------------------------------------------*/
 int main(void)
 {
+    fprintf(stderr, "Started dcgps.\n");
     struct gps_data_t *gpsdata = malloc(sizeof(struct gps_data_t));
 
     //Establish connection to gpsd daemon
-    if (gps_open(source.server, source.port, gpsdata) == -1)
+    if (gps_open(source.server, source.port, gpsdata) != 0)
     {
         fprintf(stderr, "Unable to open GPS\n");
         free(gpsdata);
         return -1;
-
     }
 
     //Set watch policy to read for JSON objects
@@ -74,5 +74,6 @@ int main(void)
     gps_close(gpsdata);
 
     free(gpsdata);
+    fprintf(stderr, "Exited program.\n");
     return 0;
 }
